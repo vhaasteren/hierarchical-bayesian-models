@@ -69,6 +69,7 @@ import scipy.stats as sstats
 import scipy.linalg as sl
 import re
 from enterprise.signals.parameter import function
+import enterprise.constants as const
 
 class kumaraswamy_distribution(sstats.rv_continuous):
     """Kumaraswamy distribution like for scipy"""
@@ -288,7 +289,7 @@ class BoundedMvNormalPlHierarchicalPrior(object):
             f"{self._name}_L_gamma",
             f"{self._name}_L_12",
         ]
-    
+
     def get_hyper_pars(self, x):
         """Get only the hyperparameters"""
         return np.array(x)[self._ind_hyper]
@@ -568,6 +569,7 @@ class EnterpriseWrapper(object):
         self._ndim = self._ndim_level1 + self._ndim_level2
         self._ptapar_to_array, self._array_to_ptapar = ptapar_mapping(self._pta)
 
+    @property
     def param_names(self):
         """All parameter names of whole HBM"""
         param_names_orig = self._pta.param_names
