@@ -553,7 +553,8 @@ class EnterpriseWrapper(object):
         param hyper_regexps: dict of dictionaries
                              {'rn_noise': {'log10_amp': 'regexp',
                                            'gamma': 'regexp',
-                                           'prior': BoundedMvNormalPlHierarchicalPrior}}
+                                           'prior': BoundedMvNormalPlHierarchicalPrior,
+                                           }}
 
         """
         self._pta = pta
@@ -569,7 +570,7 @@ class EnterpriseWrapper(object):
                                 ind_offset=self._ndim_level1+self._ndim_level2,
                                 gamma_lower=0,
                                 gamma_upper=7,
-                                name=noise_component_name
+                                name=noise_component_name,
                 )
 
             self._ndim_level2 += prior.hyper_ndim()
